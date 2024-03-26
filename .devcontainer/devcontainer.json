@@ -1,0 +1,79 @@
+{
+  "name": "serverless-springboot3-snapstart",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/aws-cli:1": {},
+    "ghcr.io/devcontainers-contrib/features/aws-cdk:2": {},
+    "ghcr.io/devcontainers-contrib/features/curl-apt-get:1": {},
+    "ghcr.io/devcontainers-contrib/features/prettier:1": {},
+    "ghcr.io/devcontainers/features/python:1": {},
+    "ghcr.io/guiyomh/features/vim:0": {},
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "21.0.2",
+      "installMaven": "false",
+      "installCradle": "false"
+    },
+    "ghcr.io/devcontainers-contrib/features/gradle-sdkman:2": {
+      "version": "8.5"
+    },
+    "ghcr.io/devcontainers-contrib/features/springboot-sdkman:2": {}
+  },
+  "postCreateCommand": "/bin/bash .devcontainer/postCreateCommand.sh",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "editor.formatOnType": true,
+        "editor.detectIndentation": false,
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
+        "terminal.integrated.defaultProfile.mac": {
+          "path": "/bin/bash"
+        },
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.defaultProfile.windows": "bash",
+        "files.exclude": {
+          "**/*.map": true,
+          "**/.next": true,
+          "**/cdk.out": true,
+          "**/build": true,
+          "**/node_modules": true,
+          "**/.gradle": true
+        },
+        "files.watcherExclude": {
+          "**/*.map": true,
+          "**/.next": true,
+          "**/cdk.out": true,
+          "**/build": true,
+          "**/node_modules": true,
+          "**/.git/objects/**": true,
+          "**/.git/subtree-cache/**": true,
+          "**/node_modules/*/**": true,
+          "**/.gradle/**": true
+        },
+        "workbench.colorCustomizations": {
+          "activityBar.background": "#0c0c4b",
+          "titleBar.activeBackground": "#0c0c4b",
+          "titleBar.activeForeground": "#F3FDF3"
+        }
+      },
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "editorconfig.editorconfig",
+        "eamodio.gitlens",
+        "vscodeshift.material-ui-snippets",
+        "naumovs.color-highlight",
+        "amazonwebservices.aws-toolkit-vscode",
+        "vscjava.vscode-java-pack"
+      ]
+    }
+  }
+}

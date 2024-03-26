@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Example Pet Store API written with SpringBoot with the aws-serverless-java-container library
+Globals:
+  Api:
+    EndpointConfiguration: REGIONAL
+Resources:
+  SnapStartDemoFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.amazonaws.serverless.sample.springboot3.StreamLambdaHandler::handleRequest
+      Runtime: java21
+      CodeUri: .
+      MemorySize: 128
+      Policies: AWSLambdaBasicExecutionRole
+      Timeout: 60
+      # for snap start
+      SnapStart:
+        ApplyOn: PublishedVersions
+      # for auto publish
+      AutoPublishAlias: live
+      Events:
+        HttpApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /{proxy+}
+            Method: any
+            TimeoutInMillis: 20000
+            PayloadFormatVersion: "1.0"
+Outputs:
+  SnapStartDemoApi:
+    Description: URL for snapstart
+    Value: !Sub https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/pets
+    Export:
+      Name: SnapStartDemoApi
